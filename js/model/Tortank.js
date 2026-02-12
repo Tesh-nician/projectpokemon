@@ -1,4 +1,4 @@
-export {Tortank};
+export {Tortank} from "./Tortank.js";
 
 //Pokemon type Tortank
 
