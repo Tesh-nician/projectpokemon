@@ -77,10 +77,7 @@
 
           console.log("myPokemon object created:", myPokemon);
 
-  
-
-
-         
+          
 
           /* appendchild au container pour montrer le pokemon selectionné */
 
@@ -107,6 +104,61 @@
          
           let myHealthDiv = document.getElementById("my-health-div");
           myHealthDiv.appendChild(healthBar);
+
+
+          /* Get the adversary pokemon from localStorage */
+
+
+          let adversaryPokemonName = localStorage.getItem("adversaryPokemon");
+          console.log("Adversary Pokemon: " + adversaryPokemonName);
+
+          /* create adversary pokemon object based on the selectedPokemon value */
+          let adversaryPokemon;
+          switch (adversaryPokemonName.toLowerCase()) {
+            case "dracaufeu":
+              adversaryPokemon = new Dracaufeu();
+              break;
+            case "tartiflette":
+              adversaryPokemon = new Tartiflette();
+              break;
+            case "tortank":
+              adversaryPokemon = new Tortank();
+              break;
+            default:
+              console.log("Unknown Adversary Pokemon selected");
+          }
+
+          console.log("adversaryPokemon object created:", adversaryPokemon);
+
+          
+
+          /* appendchild au container pour montrer le pokemon selectionné */
+
+          let adversaryContainer = document.querySelector(".battle-adversary-container");
+          let adversaryImage = document.createElement("img");
+          adversaryImage.src = adversaryPokemon.pokurl;
+          adversaryImage.style.width = "300px";
+          adversaryImage.style.height = "auto";
+          adversaryContainer.appendChild(adversaryImage);
+
+        /*  add pokeName, hp and maxhp to battle-adversary-text-box */
+          let adversaryTextBox = document.querySelector(".battle-adversary-text-box");
+          adversaryTextBox.innerHTML = `${adversaryPokemon.pokeName}<br>HP: ${adversaryPokemon.hp}/${adversaryPokemon.maxhp}`;
+
+
+           /* add a health bar to my-health-div with a width proportional to the hp/maxhp ratio of myPokemon */
+          let opponentHealthBar = document.createElement("div");
+          opponentHealthBar.id = "opponent-health-bar";
+          opponentHealthBar.style.width = `${(adversaryPokemon.hp / adversaryPokemon.maxhp) * 300}px`;
+          opponentHealthBar.style.height = "20px";
+          opponentHealthBar.style.backgroundColor = "red";
+          opponentHealthBar.style.borderRadius = "10px";
+         
+          let opponentHealthDiv = document.getElementById("opponent-health-div");
+          opponentHealthDiv.appendChild(opponentHealthBar);
+
+
+          
                   
         </script>
 

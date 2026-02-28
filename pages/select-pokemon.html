@@ -51,12 +51,41 @@
 
     
 </body>
-<script>
+ <script type="module">
+          import { Dracaufeu } from "/js/model/dracaufeu.js";
+          import { Tartiflette } from "/js/model/tartiflette.js";
+          import { Tortank } from "/js/model/tortank.js";
+          import { Pokemon } from "/js/model/pokemon.js";
+
 /*  le id du button est stocké dans localStorage (= $_Session)  */
 
 document.querySelectorAll('.select-pokemon-button').forEach(button => {
   button.addEventListener('click', function() {
     localStorage.setItem('selectedPokemon', this.id);
+ /* create a random pokemon and add to localStorage */
+
+    let adversaryPokemon;
+
+    let randomSelector = Math.floor(Math.random() * 3);
+
+    switch (randomSelector) {
+      case 0:
+        adversaryPokemon = "Dracaufeu";
+        break;
+      case 1:
+        adversaryPokemon = "Tartiflette";
+        break;
+      case 2:
+        adversaryPokemon = "Tortank";
+        break;
+        default: console.log("Erreur dans le switch page select-pokemon");
+    }   
+
+    console.log("Adversary Pokemon selected: " + adversaryPokemon);
+
+    localStorage.setItem('adversaryPokemon', adversaryPokemon);
+
+
     window.location.href = '/pages/battle.html';
   });
 });
