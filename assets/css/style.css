@@ -104,10 +104,28 @@ body {
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 0;
+    bottom: 100px;
     left: 0;
     width: 40%;
     height: 40%;
+}
+
+
+.battle-my-text-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 20%;
+    background-color: black;
+    border-width: 3px;
+    border-color: white;
+    border-style: solid;
+    border-radius: 20px;
+    color: white;
+    opacity: 0.8;
+    border-radius: 10px;
 }
 
 /* adversary container is on the top-right of the page. It contains the image of the adversary's selected pokemon. To the left of the image is a box mentioning maximum and current hp.  Under the box is a health bar. */
@@ -154,3 +172,4 @@ body {
     width: 40%;
     height: 40%;
 }
+

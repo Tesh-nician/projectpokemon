@@ -10,35 +10,17 @@
     <div class="battle-main-container">
       <div class="battle-player-container">
         <!-- player container is on the bottom-left of the page. It contains the image of the player's selected pokemon. Above the image is a box mentioning maximum and current hp. Above the box is a health bar. -->
-        <h1>TEST POSITIONING MY POKEMON</h1>
-        <script type="module">
-          import { Dracaufeu } from "/js/model/dracaufeu.js";
-          import { Tartiflette } from "/js/model/tartiflette.js";
-          import { Tortank } from "/js/model/tortank.js";
-          import { Pokemon } from "/js/model/pokemon.js";
-          console.log(
-            "Selected Pokemon: " + localStorage.getItem("selectedPokemon"),
-          );
+         <div id="my-health-div">
+          <!-- barre de santé vient ici, selectionné avec getId et puis appendChild-->
 
-          const selectedPokemon = localStorage.getItem("selectedPokemon");
-          /* create myPokemon object based on the selectedPokemon value */
-          let myPokemon;
-          switch (selectedPokemon.toLowerCase()) {
-            case "dracaufeu":
-              myPokemon = new Dracaufeu();
-              break;
-            case "tartiflette":
-              myPokemon = new Tartiflette();
-              break;
-            case "tortank":
-              myPokemon = new Tortank();
-              break;
-            default:
-              console.log("Unknown Pokemon selected");
-          }
+         </div>
 
-          console.log("myPokemon object created:", myPokemon);
-        </script>
+        <div class="battle-my-text-box">
+            
+        </div>
+
+        <!-- <h1>TEST POSITIONING MY POKEMON</h1> -->
+       
       </div>
       <!-- fin du player container -->
 
@@ -64,4 +46,68 @@
     </div>
     <!-- fin du main container -->
   </body>
+
+ <script type="module">
+          import { Dracaufeu } from "/js/model/dracaufeu.js";
+          import { Tartiflette } from "/js/model/tartiflette.js";
+          import { Tortank } from "/js/model/tortank.js";
+          import { Pokemon } from "/js/model/pokemon.js";
+          console.log(
+            "Selected Pokemon: " + localStorage.getItem("selectedPokemon"),
+          );
+
+           /* myPokemon vient du localStorage avec un switch  */ 
+
+          let selectedPokemon = localStorage.getItem("selectedPokemon");
+          /* create myPokemon object based on the selectedPokemon value */
+          let myPokemon;
+          switch (selectedPokemon.toLowerCase()) {
+            case "dracaufeu":
+              myPokemon = new Dracaufeu();
+              break;
+            case "tartiflette":
+              myPokemon = new Tartiflette();
+              break;
+            case "tortank":
+              myPokemon = new Tortank();
+              break;
+            default:
+              console.log("Unknown Pokemon selected");
+          }
+
+          console.log("myPokemon object created:", myPokemon);
+
+  
+
+
+         
+
+          /* appendchild au container pour montrer le pokemon selectionné */
+
+          let playerContainer = document.querySelector(".battle-player-container");
+          let pokemonImage = document.createElement("img");
+          pokemonImage.src = myPokemon.pokurl;
+          pokemonImage.style.width = "300px";
+          pokemonImage.style.height = "auto";
+          playerContainer.appendChild(pokemonImage);
+
+        /*  add pokeName, hp and maxhp to battle-my-text-box */
+          let myTextBox = document.querySelector(".battle-my-text-box");
+          myTextBox.innerHTML = `${myPokemon.pokeName}<br>HP: ${myPokemon.hp}/${myPokemon.maxhp}`;
+
+
+           /* add a health bar to my-health-div with a width proportional to the hp/maxhp ratio of myPokemon */
+          let healthBar = document.createElement("div");
+          healthBar.id = "my-health-bar";
+          healthBar.style.width = `${(myPokemon.hp / myPokemon.maxhp) * 300}px`;
+          healthBar.style.height = "20px";
+          healthBar.style.backgroundColor = "green";
+          healthBar.style.borderRadius = "10px";
+          healthBar.style.marginBottom = "10px";
+         
+          let myHealthDiv = document.getElementById("my-health-div");
+          myHealthDiv.appendChild(healthBar);
+                  
+        </script>
+
 </html>
