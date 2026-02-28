@@ -6,10 +6,10 @@
 
 export class Dracaufeu {
   constructor() {
-    maxhp = 360;
-    hp = 360;
-    pokeName = "Dracaufeu";
-    pokurl="/assets/images/dracaufau.png"
+    this.maxhp = 360;
+    this.hp = 360;
+    this.pokeName = "Dracaufeu";
+    this.pokurl="/assets/images/dracaufau.png"
 
     this.attack1 = "Lance_Flamme";
     this.attack2 = "Air_Slash";

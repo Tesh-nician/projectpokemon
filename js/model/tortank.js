@@ -6,9 +6,10 @@
 
 export class Tortank {
   constructor() {
-    maxhp = 360;
-    hp = 360;
-    pokeName = "Tortank";
+    this.maxhp = 360;
+    this.hp = 360;
+    this.pokeName = "Tortank";
+    this.pokurl="/assets/images/tortank.png"
 
     this.attack1 = "Surf";
     this.attack2 = "Croc";

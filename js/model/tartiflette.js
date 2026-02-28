@@ -6,9 +6,10 @@
 
 export class Tartiflette {
   constructor() {
-    maxhp = 360;
-    hp = 360;
-    pokeName = "Wokeizarre";
+    this.maxhp = 360;
+    this.hp = 360;
+    this.pokeName = "Wokeizarre";
+    this.pokurl="/assets/images/florizarre.png"
 
     this.attack1 = "Tempete_de_woke";
     this.attack2 = "Bombe_a_woke";
