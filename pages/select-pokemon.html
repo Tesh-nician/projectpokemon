@@ -21,27 +21,29 @@
 
       <div class="pokemon-list-container">
 
-        <button class="select-pokemon-button" onclick="window.location.href='/pages/battle.html'">
+        <button class="select-pokemon-button" id="Dracaufeu">
           <img src="/assets/images/dracaufau.png" width="100" height="100" alt="Dracaufeu">
           <span>Dragaufeu <br>360HP</span>
         </button>
 
-        <button class="select-pokemon-button" onclick="window.location.href='/pages/battle.html'">
+        <button class="select-pokemon-button" onclick="window.location.href='/pages/battle.html'" id="Tartiflette">
           <img src="/assets/images/florizarre.png" width="100" height="100" alt="Tartiflette">
           <span>Tartiflette <br>364HP</span>
         </button>
 
-        <button class="select-pokemon-button" onclick="window.location.href='/pages/battle.html'">
+        <button class="select-pokemon-button" onclick="window.location.href='/pages/battle.html'" id="Tortank">
           <img src="/assets/images/tortank.png" width="100" height="100" alt="Tortank">
           <span>Tortank <br>362HP</span>
         </button>
 
 
       </div>
+      <!-- fin du pokemon list container -->
 
 
 
-    </div class>
+    </div>
+    <!-- fin du main container -->
 
   
 
@@ -49,4 +51,15 @@
 
     
 </body>
+<script>
+/*  le id du button est stocké dans localStorage (= $_Session)  */
+
+document.querySelectorAll('.select-pokemon-button').forEach(button => {
+  button.addEventListener('click', function() {
+    localStorage.setItem('selectedPokemon', this.id);
+    window.location.href = '/pages/battle.html';
+  });
+});
+
+</script>
 </html>

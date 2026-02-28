@@ -1,6 +1,6 @@
 //class representing the pokemon objects
 
-class pokemon {
+export class Pokemon {
 
     //1 Fire, 2 Water, or 3 Grass
 

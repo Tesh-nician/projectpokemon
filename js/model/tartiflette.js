@@ -1,22 +1,21 @@
-export {Dracaufeu} from "./Dracaufeu.js";
+// export {Tartiflette} from "./tartiflette.js";
 
-//Pokemeon type Dracaufeu
+//Pokemon type Wokeizarre
 
 //Pokemon types are 1 Fire, 2 Water, or 3 Grass
 
-export class Dracaufeu {
+export class Tartiflette {
   constructor() {
     maxhp = 360;
     hp = 360;
-    pokeName = "Dracaufeu";
-    pokurl=""
+    pokeName = "Wokeizarre";
 
-    this.attack1 = "Lance_Flamme";
-    this.attack2 = "Air_Slash";
-    this.attack3 = "Griffe_de_Dragon";
-    this.attack4 = "Sabre";
+    this.attack1 = "Tempete_de_woke";
+    this.attack2 = "Bombe_a_woke";
+    this.attack3 = "Tremblement_de_woke";
+    this.attack4 = "Coup_de_p..e";
+
   }
-
 
 
   standardAttack(attackforce, attackprecision) {
@@ -29,7 +28,7 @@ export class Dracaufeu {
   }
 
   attack1(targetpokemon) {
-    attackName = "Lance_Flamme";
+    attackName = "Tempete_de_woke";
     //1 Fire, 2 Water, or 3 Grass
     attackprecision = 0.8;
     basicAttackValue = this.standardAttack(20,this.attackprecision )
@@ -61,8 +60,8 @@ export class Dracaufeu {
 
 
  attack2(targetpokemon) { 
-    attackName = "Air_Slash";
-    //1 Fire, 2 Water, or 3 Grass
+    attackName = "Bombe_a_woke";
+   
 
     //1 Fire, 2 Water, or 3 Grass
     attackprecision = 0.9;
@@ -96,7 +95,7 @@ export class Dracaufeu {
 
 
  attack3(targetpokemon) {
-     attackName = "Griffe_de_Dragon";
+     attackName = "Tremblement_de_woke";
      //1 Fire, 2 Water, or 3 Grass
 
    //1 Fire, 2 Water, or 3 Grass
@@ -130,7 +129,7 @@ export class Dracaufeu {
 
 
  attack4(targetpokemon) {
-    attackName = "Sabre";
+    attackName = "Coup_de_p..e";
 
    //1 Fire, 2 Water, or 3 Grass
     attackprecision = 1.0;

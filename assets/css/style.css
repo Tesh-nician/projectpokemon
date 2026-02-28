@@ -79,3 +79,78 @@ body {
     border-color: yellow;
     scale: 1.2;    
 }
+
+
+/* battle */
+
+.battle-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url(/assets/images/background2.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* player container is on the bottom-left of the page. It contains the image of the player's selected pokemon. Above the image is a box mentioning maximum and current hp. Above the box is a health bar. */
+
+
+.battle-player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40%;
+    height: 40%;
+}
+
+/* adversary container is on the top-right of the page. It contains the image of the adversary's selected pokemon. To the left of the image is a box mentioning maximum and current hp.  Under the box is a health bar. */
+
+.battle-adversary-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 40%;
+}
+
+
+/* the message container is a box in the middle of the page, with a message box that displays the actions of the player and the adversary during the battle */
+
+.battle-message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 20%;
+}
+
+
+/* the actions container is a box on the bottom-right of the page. It contains the four buttons with the 4 attacks of the player's selected pokemon.  */
+
+.battle-actions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40%;
+    height: 40%;
+}

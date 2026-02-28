@@ -4,40 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battle</title>
-    <script type="module" src="battle.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+   
+
 </head>
 <body>
 
-    <div class="main-container">
+    <div class="battle-main-container">
         
-    <div class="player-container">
+    <div class="battle-player-container">
         <!-- player container is on the bottom-left of the page. It contains the image of the player's selected pokemon. Above the image is a box mentioning maximum and current hp. Above the box is a health bar. -->
+        <H1>TEST POSITIONING MY POKEMON</H1>
+        <script type="module">
+    import {Dracaufeu} from "./js/model/dracaufeu.js";
+    import {Tartiflette} from "./js/model/tartiflette.js";
+    import {Tortank} from "./js/model/tortank.js";
+    import {Pokemon} from "./js/model/pokemon.js"; 
+            console.log("Selected Pokemon: " + localStorage.getItem('selectedPokemon'));
+            <!--  the image of the player's selected pokemon is displayed in the player container -->
+            const selectedPokemon = localStorage.getItem('selectedPokemon');
+            /* create myPokemon object based on the selectedPokemon value */
+            let myPokemon;
+            switch(selectedPokemon.toLowerCase()) {
+                case 'dracaufeu':
+                    myPokemon = new Dracaufeu();
+                    break;
+                case 'tartiflette':
+                    myPokemon = new Tartiflette();
+                    break;
+                case 'tortank':
+                    myPokemon = new Tortank();
+                    break;
+                default:
+                    console.log("Unknown Pokemon selected");
+            }
+
+            console.log("myPokemon object created:", myPokemon);
+          
+
+        </script>
 
 
 
-        </div class="player-container">
 
-        <div class="adversary-container">
+    </div>
+    <!-- fin du player container -->
+    
+    
+    <div class="battle-adversary-container">
 
         <!-- the adversary container is on the top-right of the page. It contains the image of the adversary's selected pokemon. To the left of the image is a box mentioning maximum and current hp.  Under the box is a health bar. -->
+
+        <H1>ADVERSARY</H1>
             
-        </div class="adversary-container">
+    </div>
+    <!-- fin du adversary container -->
 
-
-        <div class="message-container">
+    <div class="battle-message-container">
 
         <!-- the message container is a box in the middle of the page, with a message box that displays the actions of the player and the adversary during the battle -->
-            
-        </div class="message-container">
 
-        <div class="actions-container">
+        <H1>MESSAGE CONTAINER</H1>
+            
+    </div>
+    <!-- fin du message container -->
+    
+    
+    <div class="battle-actions-container">
 
         <!-- the actions container is a box on the bottom-right of the page. It contains the four buttons with the 4 attacks of the player's selected pokemon.  -->
 
-        </div>
+        <H1>ACTIONS CONTAINER</H1>
+
+    </div>
     
     
-    </div class>
+    </div>
+    <!-- fin du main container -->
+
 
 
     
