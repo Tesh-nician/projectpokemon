@@ -19,7 +19,7 @@
 
           <div class="pokeball-container">
 
-            <button class="button-pokeball" onclick="window.location.href='/pages/select-pokemon.html'">
+            <button class="button-pokeball">
             </button>
          
 
@@ -28,6 +28,18 @@
 
 
     </div class>
+    <script>
+
+        let pokeballButton = document.querySelector(".button-pokeball");
+
+        pokeballButton.addEventListener("click", () => {
+            window.location.href="/pages/select-pokemon.html";
+        });
+
+
+
+
+    </script>
 
   
 

@@ -11,6 +11,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    font-size: x-large;
 
     /* https://www.sitepoint.com/css-viewport-units-quick-start/ */
     height: 100vh;
@@ -25,10 +27,32 @@ body {
     
     background-size: cover;
     background-image: url(/assets/images/pokebal1.webp);
+    background-position: center;
     background-repeat: no-repeat;
     height: 100px;
     width: 100px;
     border-radius: 20px;
+}
+
+.button-pokeball:hover {
+    scale: 1.2;
+    animation: poke-button 3s linear infinite;
+    
+    
+    
+}
+
+@keyframes poke-button {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+  
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 
