@@ -199,28 +199,146 @@
           /* for now, the 4 buttons will have the same attack name, which is the name of the first attack of myPokemon. In the future, we will assign each button to a different attack of myPokemon. */
 
           attack1Button.addEventListener("click", () => {
-            console.log("Attack 1: " + myPokemon.attack1(adversaryPokemon));
-            /* update adversary health bar width */
-            adversaryHealthBar.style.width = `${(adversaryPokemon.hp / adversaryPokemon.maxhp) * 300}px`;
+            let attackResult = myPokemon.attack1(adversaryPokemon);
+            console.log("Attack 1: " + attackResult);
+            adversaryPokemon.hp-=attackResult;
+
+            /* call post-attack functions to update the battle message container and check for end of battle */
+
+            updateMonAttaque(myPokemon, adversaryPokemon, attackResult);
+            checkFinDuBataille(myPokemon, adversaryPokemon);
+            console.log("Adversary Pokemon HP after attack: " + adversaryPokemon.hp);
+            contreAttaque(adversaryPokemon, myPokemon);
+            checkFinDuBataille(myPokemon, adversaryPokemon);          
             
 
           });
           attack2Button.addEventListener("click", () => {
-            console.log("Attack 2: " + myPokemon.attack2(adversaryPokemon));
-            /* update adversary health bar width */
-            adversaryHealthBar.style.width = `${(adversaryPokemon.hp / adversaryPokemon.maxhp) * 300}px`;
-          });
-          attack3Button.addEventListener("click", () => {
-            console.log("Attack 3: " + myPokemon.attack3(adversaryPokemon));
-            /* update adversary health bar width */
-            adversaryHealthBar.style.width = `${(adversaryPokemon.hp / adversaryPokemon.maxhp) * 300}px`;
-          });
-          attack4Button.addEventListener("click", () => {
-            console.log("Attack 4: " + myPokemon.attack4(adversaryPokemon));
+            let attackResult = myPokemon.attack2(adversaryPokemon);
+            console.log("Attack 2: " + attackResult);
+            adversaryPokemon.hp-=attackResult;
+            
+            /* call post-attack functions to update the battle message container and check for end of battle */
+
+            updateMonAttaque(myPokemon, adversaryPokemon, attackResult);
+            checkFinDuBataille(myPokemon, adversaryPokemon);
             console.log("Adversary Pokemon HP after attack: " + adversaryPokemon.hp);
-            /* update adversary health bar width */
-            adversaryHealthBar.style.width = `${(adversaryPokemon.hp / adversaryPokemon.maxhp) * 300}px`;
+            contreAttaque(adversaryPokemon, myPokemon);
+            checkFinDuBataille(myPokemon, adversaryPokemon);  
           });
+
+          attack3Button.addEventListener("click", () => {
+            let attackResult = myPokemon.attack3(adversaryPokemon);
+            console.log("Attack 3: " + attackResult);
+            adversaryPokemon.hp-=attackResult;
+            
+            /* call post-attack functions to update the battle message container and check for end of battle */
+
+            updateMonAttaque(myPokemon, adversaryPokemon, attackResult);
+            checkFinDuBataille(myPokemon, adversaryPokemon);
+            console.log("Adversary Pokemon HP after attack: " + adversaryPokemon.hp);
+            contreAttaque(adversaryPokemon, myPokemon);
+          });
+
+          attack4Button.addEventListener("click", () => {
+            let attackResult = myPokemon.attack4(adversaryPokemon);
+            console.log("Attack 4: " + attackResult);
+            adversaryPokemon.hp-=attackResult;
+            
+            /* call post-attack functions to update the battle message container and check for end of battle */
+
+            updateMonAttaque(myPokemon, adversaryPokemon, attackResult);
+            checkFinDuBataille(myPokemon, adversaryPokemon);
+            console.log("Adversary Pokemon HP after attack: " + adversaryPokemon.hp);
+            contreAttaque(adversaryPokemon, myPokemon);
+
+          });
+
+
+
+          function updateMonAttaque(myPokemon, adversaryPokemon, attackResult) {
+
+            /* Update myPokemon health bar */
+            healthBar.style.width = `${(myPokemon.hp / myPokemon.maxhp) * 300}px`;
+
+            
+             /* update barre de santé */
+            adversaryHealthBar.style.width = `${(adversaryPokemon.hp / adversaryPokemon.maxhp) * 300}px`;
+            /*update text box adversary pokemon hp */
+            let adversaryTextBox = document.querySelector(".battle-adversary-text-box");
+            adversaryTextBox.innerHTML = `${adversaryPokemon.pokeName}<br>HP: ${adversaryPokemon.hp}/${adversaryPokemon.maxhp}`;
+
+          }
+
+          function contreAttaque(adversaryPokemon, myPokemon) {
+           
+           /* Randomiser l'attaque de l'adversaire */
+            let battleMessageContainer = document.querySelector(".battle-message-container");
+            choixDAttaqueAdversaire = Math.floor(Math.random() * 4) + 1;
+
+           switch (choixDAttaqueAdversaire) {
+            case 1:
+              let attackResult = adversaryPokemon.attack1(myPokemon);
+              battleMessageContainer.innerHTML = `${adversaryPokemon.pokeName} utilise un ${adversaryPokemon.attack1name} et a fait ${attackResult} de dégâts!`;
+              
+              break;
+
+            case 2:
+              attackResult = adversaryPokemon.attack2(myPokemon);
+              battleMessageContainer.innerHTML = `${adversaryPokemon.pokeName} utilise un ${adversaryPokemon.attack2name} et a fait ${attackResult} de dégâts!`;
+
+              break;
+
+            case 3:
+              attackResult = adversaryPokemon.attack3(myPokemon);
+              battleMessageContainer.innerHTML = `${adversaryPokemon.pokeName} utilise un ${adversaryPokemon.attack3name} et a fait ${attackResult} de dégâts!`;
+
+              break;
+
+            case 4:
+              attackResult = adversaryPokemon.attack4(myPokemon);
+              battleMessageContainer.innerHTML = `${adversaryPokemon.pokeName} utilise un ${adversaryPokemon.attack4name} et a fait ${attackResult} de dégâts!`;
+
+              break;  
+
+            default: console.log("Erreur dans le switch de la contre-attaque de l'adversaire");
+           }
+
+            console.log("Adversary counter-attack: " + attackResult);
+            myPokemon.hp-=attackResult;
+          
+
+
+
+             /* call post-attack functions to update the battle message container and check for end of battle */
+
+             
+             
+             /* update barre de santé */
+            healthBar.style.width = `${(myPokemon.hp / myPokemon.maxhp) * 300}px`;
+            /*update text box adversary pokemon hp */
+            let myTextBox = document.querySelector(".battle-my-text-box");
+            myTextBox.innerHTML = `${myPokemon.pokeName}<br>HP: ${myPokemon.hp}/${myPokemon.maxhp}`;
+          }
+
+
+          function disableAttackButtons() {
+            attack1Button.disabled = true;
+            attack2Button.disabled = true;
+            attack3Button.disabled = true;
+            attack4Button.disabled = true;
+          }
+
+          function checkFinDuBataille(myPokemon, adversaryPokemon) {
+            let battleMessageContainer = document.querySelector(".battle-message-container");
+            if (adversaryPokemon.hp <= 0) {
+              battleMessageContainer.innerHTML = `T'a gagné! ${myPokemon.pokeName} a complétement défoncé le ${adversaryPokemon.pokeName}!`;
+              disableAttackButtons();
+            } else if (myPokemon.hp <= 0) {
+              battleMessageContainer.innerHTML = `T'a perdu! Ton ${myPokemon.pokeName} a été défoncé par le ${adversaryPokemon.pokeName}!`;
+              disableAttackButtons();
+            }
+          }
 
 
           

@@ -30,7 +30,7 @@ export class Tortank {
   }
 
   attack1(targetpokemon) {
-    letattackName = "Surf";
+    let attackName = "Surf";
     //1 Fire, 2 Water, or 3 Grass
     let attackprecision = 0.8;
     let basicAttackValue = this.standardAttack(20,attackprecision )
