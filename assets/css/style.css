@@ -206,8 +206,15 @@ battle-adversary-image-box {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40%;
+    width: 35%;
     height: 20%;
+    color: white;
+    font-size: x-large;
+    background-color: black;
+    border-width: 3px;
+    border-color: white;
+    border-style: solid;
+    border-radius: 20px;
 }
 
 

@@ -196,7 +196,9 @@
           let attack4Button = document.getElementById("attaque4");
           attack4Button.innerHTML = myPokemon.attack4name;
 
-          /* for now, the 4 buttons will have the same attack name, which is the name of the first attack of myPokemon. In the future, we will assign each button to a different attack of myPokemon. */
+          /* gestion des 4 boutons d'attaque */
+          
+          let messageContainer = document.querySelector(".battle-message-container");
 
           attack1Button.addEventListener("click", () => {
             let attackResult = myPokemon.attack1(adversaryPokemon);
@@ -204,11 +206,17 @@
             adversaryPokemon.hp-=attackResult;
 
             /* call post-attack functions to update the battle message container and check for end of battle */
-
-            updateMonAttaque(myPokemon, adversaryPokemon, attackResult);
+              messageContainer.innerHTML = `Tu utilises un ${myPokemon.attack1name} pour attaquer le ${adversaryPokemon.pokeName}.`;
+            setTimeout(() => {
+              updateMonAttaque(myPokemon, adversaryPokemon, attackResult);
+            }, 2000);
+            
             checkFinDuBataille(myPokemon, adversaryPokemon);
             console.log("Adversary Pokemon HP after attack: " + adversaryPokemon.hp);
-            contreAttaque(adversaryPokemon, myPokemon);
+           setTimeout(() => {
+             contreAttaque(adversaryPokemon, myPokemon);
+           }, 2000);
+
             checkFinDuBataille(myPokemon, adversaryPokemon);          
             
 
@@ -219,11 +227,19 @@
             adversaryPokemon.hp-=attackResult;
             
             /* call post-attack functions to update the battle message container and check for end of battle */
-
-            updateMonAttaque(myPokemon, adversaryPokemon, attackResult);
+            messageContainer.innerHTML = `Tu utilises un ${myPokemon.attack2name} pour attaquer le ${adversaryPokemon.pokeName}.`;
+            
+            setTimeout(() => {
+              updateMonAttaque(myPokemon, adversaryPokemon, attackResult);
+            }, 2000);
             checkFinDuBataille(myPokemon, adversaryPokemon);
+            
             console.log("Adversary Pokemon HP after attack: " + adversaryPokemon.hp);
-            contreAttaque(adversaryPokemon, myPokemon);
+
+            setTimeout(() => {
+              contreAttaque(adversaryPokemon, myPokemon);
+            }, 2000);
+
             checkFinDuBataille(myPokemon, adversaryPokemon);  
           });
 
@@ -233,11 +249,19 @@
             adversaryPokemon.hp-=attackResult;
             
             /* call post-attack functions to update the battle message container and check for end of battle */
+            messageContainer.innerHTML = `Tu utilises un ${myPokemon.attack3name} pour attaquer le ${adversaryPokemon.pokeName}.`;
 
-            updateMonAttaque(myPokemon, adversaryPokemon, attackResult);
+            setTimeout(() => {
+              updateMonAttaque(myPokemon, adversaryPokemon, attackResult);
+            }, 2000);
+            
             checkFinDuBataille(myPokemon, adversaryPokemon);
+            
             console.log("Adversary Pokemon HP after attack: " + adversaryPokemon.hp);
-            contreAttaque(adversaryPokemon, myPokemon);
+            
+            setTimeout(() => {
+              contreAttaque(adversaryPokemon, myPokemon);
+            }, 2000);
           });
 
           attack4Button.addEventListener("click", () => {
@@ -246,13 +270,24 @@
             adversaryPokemon.hp-=attackResult;
             
             /* call post-attack functions to update the battle message container and check for end of battle */
-
-            updateMonAttaque(myPokemon, adversaryPokemon, attackResult);
+            messageContainer.innerHTML = `Tu utilises un ${myPokemon.attack4name} pour attaquer le ${adversaryPokemon.pokeName}.`;
+            setTimeout(() => {
+              updateMonAttaque(myPokemon, adversaryPokemon, attackResult);
+            }, 2000);
+            
             checkFinDuBataille(myPokemon, adversaryPokemon);
+            
             console.log("Adversary Pokemon HP after attack: " + adversaryPokemon.hp);
-            contreAttaque(adversaryPokemon, myPokemon);
+            
+            setTimeout(() => {
+              contreAttaque(adversaryPokemon, myPokemon);
+            }, 2000);
 
           });
+
+
+
+          /*tous les fonctions pour mettre-ajour le message container, les barres de santé, et vérifier la fin de la bataille */
 
 
 
@@ -268,17 +303,45 @@
             let adversaryTextBox = document.querySelector(".battle-adversary-text-box");
             adversaryTextBox.innerHTML = `${adversaryPokemon.pokeName}<br>HP: ${adversaryPokemon.hp}/${adversaryPokemon.maxhp}`;
 
+            /* battle message according to the attackResult */
+            let battleMessageContainer = document.querySelector(".battle-message-container");
+            switch (true) {
+              case (attackResult<0):
+                battleMessageContainer.innerHTML = `Attaque contre-productive qui renforce l'adversaire!`;
+                break;
+              case (attackResult<10):
+                battleMessageContainer.innerHTML = `Attaque de bof`;
+                break;
+              case (attackResult<30):
+                battleMessageContainer.innerHTML = `Attaque assez efficace!`;
+                break;
+              case (attackResult<50):
+                battleMessageContainer.innerHTML = `Attaque super efficace!`;
+                break;
+              case (attackResult>=50):
+                battleMessageContainer.innerHTML = `Attaque super-puissante de woke qui défonce complètement l'adversaire!`;
+                break;
+
+              default:
+                battleMessageContainer.innerHTML = `Erreur dans le switch de l'attaque!`;
+            }
+
+
           }
 
           function contreAttaque(adversaryPokemon, myPokemon) {
            
            /* Randomiser l'attaque de l'adversaire */
             let battleMessageContainer = document.querySelector(".battle-message-container");
-            choixDAttaqueAdversaire = Math.floor(Math.random() * 4) + 1;
+            let choixDAttaqueAdversaire = Math.floor(Math.random() * 4) + 1;
+
+            let attackResult = 0;
+
+                        
 
            switch (choixDAttaqueAdversaire) {
             case 1:
-              let attackResult = adversaryPokemon.attack1(myPokemon);
+              attackResult = adversaryPokemon.attack1(myPokemon);
               battleMessageContainer.innerHTML = `${adversaryPokemon.pokeName} utilise un ${adversaryPokemon.attack1name} et a fait ${attackResult} de dégâts!`;
               
               break;
@@ -304,21 +367,47 @@
             default: console.log("Erreur dans le switch de la contre-attaque de l'adversaire");
            }
 
+           
+
+
+
+            setTimeout(() => {   
+            switch (true) {
+              case (attackResult<0):
+                battleMessageContainer.innerHTML = `Attaque contre-productive qui renforce l'adversaire!`;
+                break;
+              case (attackResult<10):
+                battleMessageContainer.innerHTML = `Attaque de bof`;
+                break;
+              case (attackResult<30):
+                battleMessageContainer.innerHTML = `Attaque assez efficace!`;
+                break;
+              case (attackResult<50):
+                battleMessageContainer.innerHTML = `Attaque super efficace!`;
+                break;
+              case (attackResult>=50):
+                battleMessageContainer.innerHTML = `Attaque super-puissante de woke qui défonce complètement l'adversaire!`;
+                break;
+
+              default:
+                battleMessageContainer.innerHTML = `Erreur dans le switch de l'attaque!`;
+            }
+
             console.log("Adversary counter-attack: " + attackResult);
-            myPokemon.hp-=attackResult;
-          
+            myPokemon.hp -= attackResult;
 
+            
 
-
-             /* call post-attack functions to update the battle message container and check for end of battle */
-
-             
-             
-             /* update barre de santé */
+            /* update barre de santé */
             healthBar.style.width = `${(myPokemon.hp / myPokemon.maxhp) * 300}px`;
             /*update text box adversary pokemon hp */
             let myTextBox = document.querySelector(".battle-my-text-box");
             myTextBox.innerHTML = `${myPokemon.pokeName}<br>HP: ${myPokemon.hp}/${myPokemon.maxhp}`;
+
+            }, 2000);
+
+            checkFinDuBataille(myPokemon, adversaryPokemon);
+           
           }
 
 
@@ -330,12 +419,20 @@
           }
 
           function checkFinDuBataille(myPokemon, adversaryPokemon) {
+            let enemyImageContainer = document.querySelector(".battle-adversary-image-box");
+            let myImageContainer = document.querySelector(".battle-player-container");
             let battleMessageContainer = document.querySelector(".battle-message-container");
             if (adversaryPokemon.hp <= 0) {
               battleMessageContainer.innerHTML = `T'a gagné! ${myPokemon.pokeName} a complétement défoncé le ${adversaryPokemon.pokeName}!`;
+              enemyImageContainer.style.opacity = 0.5;
+              enemyImageContainer.style.scale = "0.8";
+              myImageContainer.style.scale = "1.2";
               disableAttackButtons();
             } else if (myPokemon.hp <= 0) {
               battleMessageContainer.innerHTML = `T'a perdu! Ton ${myPokemon.pokeName} a été défoncé par le ${adversaryPokemon.pokeName}!`;
+              myImageContainer.style.opacity = 0.5;
+              myImageContainer.style.scale = "0.8";
+              enemyImageContainer.style.scale = "1.2";
               disableAttackButtons();
             }
           }
