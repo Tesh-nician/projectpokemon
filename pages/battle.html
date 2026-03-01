@@ -55,7 +55,11 @@
       <div class="battle-actions-container">
         <!-- the actions container is a box on the bottom-right of the page. It contains the four buttons with the 4 attacks of the player's selected pokemon.  -->
 
-        <h1>ACTIONS CONTAINER</h1>
+        <!-- <h1>ACTIONS CONTAINER TEST</h1> -->
+        <button class="battle-action-button" id="attaque1">Attack1</button>
+        <button class="battle-action-button" id="attaque2">Attack2</button>
+        <button class="battle-action-button" id="attaque3">Attack3</button>
+        <button class="battle-action-button" id="attaque4">Attack4</button>
       </div>
     </div>
     <!-- fin du main container -->
@@ -177,6 +181,46 @@
          
           let adversaryHealthDiv = document.getElementById("adversary-health-div");
           adversaryHealthDiv.appendChild(adversaryHealthBar);
+
+
+          /* add event listeners and attack names to the attack buttons to log the attack name when clicked */
+
+          let attack1Button = document.getElementById("attaque1");
+          attack1Button.innerHTML = myPokemon.attack1name;
+          let attack2Button = document.getElementById("attaque2");
+          attack2Button.innerHTML = myPokemon.attack2name;
+          
+          let attack3Button = document.getElementById("attaque3");
+          attack3Button.innerHTML = myPokemon.attack3name;
+          
+          let attack4Button = document.getElementById("attaque4");
+          attack4Button.innerHTML = myPokemon.attack4name;
+
+          /* for now, the 4 buttons will have the same attack name, which is the name of the first attack of myPokemon. In the future, we will assign each button to a different attack of myPokemon. */
+
+          attack1Button.addEventListener("click", () => {
+            console.log("Attack 1: " + myPokemon.attack1(adversaryPokemon));
+            /* update adversary health bar width */
+            adversaryHealthBar.style.width = `${(adversaryPokemon.hp / adversaryPokemon.maxhp) * 300}px`;
+            
+
+          });
+          attack2Button.addEventListener("click", () => {
+            console.log("Attack 2: " + myPokemon.attack2(adversaryPokemon));
+            /* update adversary health bar width */
+            adversaryHealthBar.style.width = `${(adversaryPokemon.hp / adversaryPokemon.maxhp) * 300}px`;
+          });
+          attack3Button.addEventListener("click", () => {
+            console.log("Attack 3: " + myPokemon.attack3(adversaryPokemon));
+            /* update adversary health bar width */
+            adversaryHealthBar.style.width = `${(adversaryPokemon.hp / adversaryPokemon.maxhp) * 300}px`;
+          });
+          attack4Button.addEventListener("click", () => {
+            console.log("Attack 4: " + myPokemon.attack4(adversaryPokemon));
+            console.log("Adversary Pokemon HP after attack: " + adversaryPokemon.hp);
+            /* update adversary health bar width */
+            adversaryHealthBar.style.width = `${(adversaryPokemon.hp / adversaryPokemon.maxhp) * 300}px`;
+          });
 
 
           

@@ -9,19 +9,20 @@ export class Tortank {
     this.maxhp = 360;
     this.hp = 360;
     this.pokeName = "Tortank";
-    this.pokurl="/assets/images/tortank.png"
+    this.pokurl="/assets/images/tortank.png";
+    this.type = 3;
 
-    this.attack1 = "Surf";
-    this.attack2 = "Croc";
-    this.attack3 = "Poing_a_Glace";
-    this.attack4 = "Canon_Flash";
+    this.attack1name = "Surf";
+    this.attack2name = "Croc";
+    this.attack3name = "Poing_a_Glace";
+    this.attack4name = "Canon_Flash";
 
   }
 
 
   standardAttack(attackforce, attackprecision) {
 
-    attackSuccess = attackprecision >= Math.random(); //= Boolean
+    let attackSuccess = attackprecision >= Math.random(); //= Boolean
 
     if (attackSuccess) {
         return attackforce+ Math.floor(Math.random()*10) //modifier plus tard si necessaire
@@ -29,27 +30,28 @@ export class Tortank {
   }
 
   attack1(targetpokemon) {
-    attackName = "Surf";
+    letattackName = "Surf";
     //1 Fire, 2 Water, or 3 Grass
-    attackprecision = 0.8;
-    basicAttackValue = this.standardAttack(20,this.attackprecision )
+    let attackprecision = 0.8;
+    let basicAttackValue = this.standardAttack(20,attackprecision )
+    let messageContainer = document.querySelector(".battle-message-container");
 
     if (targetpokemon.hp > 0) {
       switch (targetpokemon.type) {
         case 1:
-          echo("Attack totallement inefficace qui renforce l'ennemi!" )  
+          messageContainer.innerHTML += "<p>Attack totallement inefficace qui renforce l'ennemi!</p>";
           return -0.5*basicAttackValue;
           break;
         case 2:
-          echo ("Attack de bof");  
+          messageContainer.innerHTML += "<p>Attack de bof</p>";  
           return 1*basicAttackValue;
           break;
         case 3:
-          echo ("Attack super efficace!");  
+          messageContainer.innerHTML += "<p>Attack super efficace!</p>";  
           return 2*basicAttackValue;
           break;
         default:
-          console.log("attack error in switch");
+          messageContainer.innerHTML += "<p>attack error in switch</p>";
       } //end switch
 
       return true;
@@ -61,29 +63,30 @@ export class Tortank {
 
 
  attack2(targetpokemon) { 
-    attackName = "Croc";
+    let attackName = "Croc";
     //1 Fire, 2 Water, or 3 Grass
 
     //1 Fire, 2 Water, or 3 Grass
-    attackprecision = 0.9;
-    basicAttackValue = this.standardAttack(20,this.attackprecision )
+    let attackprecision = 0.9;
+    let basicAttackValue = this.standardAttack(20,attackprecision )
+    let messageContainer = document.querySelector(".battle-message-container");
 
     if (targetpokemon.hp > 0) {
       switch (targetpokemon.type) {
         case 1:
-          echo("Attack totallement inefficace qui renforce l'ennemi!" )  
+          messageContainer.innerHTML += "<p>Attack totallement inefficace qui renforce l'ennemi!</p>";
           return -0.5*basicAttackValue;
           break;
         case 2:
-          echo ("Attack de bof");  
+          messageContainer.innerHTML += "<p>Attack de bof</p>";  
           return 1*basicAttackValue;
           break;
         case 3:
-          echo ("Attack super efficace!");  
+          messageContainer.innerHTML += "<p>Attack super efficace!</p>";  
           return 2*basicAttackValue;
           break;
         default:
-          console.log("attack error in switch");
+          messageContainer.innerHTML += "<p>attack error in switch</p>";
       } //end switch
 
       return true;
@@ -96,29 +99,31 @@ export class Tortank {
 
 
  attack3(targetpokemon) {
-     attackName = "Poing_a_Glace";
+     let attackName = "Poing_a_Glace";
      //1 Fire, 2 Water, or 3 Grass
 
    //1 Fire, 2 Water, or 3 Grass
-    attackprecision = 0.9;
-    basicAttackValue = this.standardAttack(10,this.attackprecision )
+    let attackprecision = 0.9;
+    let basicAttackValue = this.standardAttack(10,attackprecision )
+    let messageContainer = document.querySelector(".battle-message-container");
 
     if (targetpokemon.hp > 0) {
       switch (targetpokemon.type) {
         case 1:
-          echo("Attack totallement inefficace qui renforce l'ennemi!" )  
+          messageContainer.innerHTML += "<p>Attack totallement inefficace qui renforce l'ennemi!</p>";
+          
           return -0.5*basicAttackValue;
           break;
         case 2:
-          echo ("Attack de bof");  
+          messageContainer.innerHTML += "<p>Attack de bof</p>";  
           return 1*basicAttackValue;
           break;
         case 3:
-          echo ("Attack super efficace!");  
+          messageContainer.innerHTML += "<p>Attack super efficace!</p>";  
           return 2*basicAttackValue;
           break;
         default:
-          console.log("attack error in switch");
+          messageContainer.innerHTML += "<p>attack error in switch</p>";
       } //end switch
 
       return true;
@@ -130,28 +135,30 @@ export class Tortank {
 
 
  attack4(targetpokemon) {
-    attackName = "Canon_Flash";
+    let attackName = "Canon_Flash";
 
    //1 Fire, 2 Water, or 3 Grass
-    attackprecision = 1.0;
-    basicAttackValue = this.standardAttack(5,this.attackprecision )
+    let attackprecision = 1.0;
+    let basicAttackValue = this.standardAttack(5,attackprecision )
+    let messageContainer = document.querySelector(".battle-message-container");
 
     if (targetpokemon.hp > 0) {
       switch (targetpokemon.type) {
         case 1:
-          echo("Attack totallement inefficace qui renforce l'ennemi!" )  
+          messageContainer.innerHTML += "<p>Attack totallement inefficace qui renforce l'ennemi!</p>";
+          
           return -0.5*basicAttackValue;
           break;
         case 2:
-          echo ("Attack de bof");  
+          messageContainer.innerHTML += "<p>Attack de bof</p>";  
           return 1*basicAttackValue;
           break;
         case 3:
-          echo ("Attack super efficace!");  
+          messageContainer.innerHTML += "<p>Attack super efficace!</p>";  
           return 2*basicAttackValue;
           break;
         default:
-          echo ("attack error in switch");
+          messageContainer.innerHTML += "<p>attack error in switch</p>";
       } //end switch
 
       return true;

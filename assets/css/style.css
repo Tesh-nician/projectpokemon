@@ -211,17 +211,53 @@ battle-adversary-image-box {
 }
 
 
-/* the actions container is a box on the bottom-right of the page. It contains the four buttons with the 4 attacks of the player's selected pokemon.  */
+/* the actions container is a box on the bottom-right of the page. It has a grid with four buttons for the 4 attacks of the player's selected pokemon.  */
 
 .battle-actions-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    /* flex-direction: column; */
+   
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    height: 30%;
+    background-color: black;
+    color: white;
+    border-width: 3px;
+    border-color: white;
+    border-style: solid;
+    border-radius: 20px;
+    /* opacity: 0.6; */
+}
+
+.battle-action-button {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 40%;
-    height: 40%;
+    text-align: center;
+    width: 90%;
+    height: 80%;
+    z-index: 1;
+    background-color: black;
+    border-radius: 20px;
+    border-width: 2px;
+    border-color: white;
+    border-style: solid;
+    color: white;
+    opacity: 1;
+    
+}
+
+
+.battle-action-button:hover {
+    border-width: 6px;
+    
+    scale: 1.1;    
 }
 

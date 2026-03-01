@@ -9,19 +9,20 @@ export class Tartiflette {
     this.maxhp = 360;
     this.hp = 360;
     this.pokeName = "Wokeizarre";
-    this.pokurl="/assets/images/florizarre.png"
+    this.pokurl="/assets/images/florizarre.png";
+    this.type = 2;
 
-    this.attack1 = "Tempete_de_woke";
-    this.attack2 = "Bombe_a_woke";
-    this.attack3 = "Tremblement_de_woke";
-    this.attack4 = "Coup_de_p..e";
+    this.attack1name = "Tempete_de_woke";
+    this.attack2name = "Bombe_a_woke";
+    this.attack3name = "Tremblement_de_woke";
+    this.attack4name = "Coup_de_p..e";
 
   }
 
 
   standardAttack(attackforce, attackprecision) {
 
-    attackSuccess = attackprecision >= Math.random(); //= Boolean
+    let attackSuccess = attackprecision >= Math.random(); //= Boolean
 
     if (attackSuccess) {
         return attackforce+ Math.floor(Math.random()*10) //modifier plus tard si necessaire
@@ -29,27 +30,29 @@ export class Tartiflette {
   }
 
   attack1(targetpokemon) {
-    attackName = "Tempete_de_woke";
+    let attackName = "Tempete_de_woke";
     //1 Fire, 2 Water, or 3 Grass
-    attackprecision = 0.8;
-    basicAttackValue = this.standardAttack(20,this.attackprecision )
+    let attackprecision = 0.8;
+    let basicAttackValue = this.standardAttack(20,attackprecision );
+    let messageContainer = document.querySelector(".battle-message-container");
 
     if (targetpokemon.hp > 0) {
       switch (targetpokemon.type) {
         case 1:
-          echo("Attack totallement inefficace qui renforce l'ennemi!" )  
+          messageContainer.innerHTML += "<p>Attack totallement inefficace qui renforce l'ennemi!</p>";
+          
           return -0.5*basicAttackValue;
           break;
         case 2:
-          echo ("Attack de bof");  
+          messageContainer.innerHTML += "<p>Attack de bof</p>";  
           return 1*basicAttackValue;
           break;
         case 3:
-          echo ("Attack super efficace!");  
+          messageContainer.innerHTML += "<p>Attack super efficace!</p>";  
           return 2*basicAttackValue;
           break;
         default:
-          console.log("attack error in switch");
+          messageContainer.innerHTML += "<p>attack error in switch</p>";
       } //end switch
 
       return true;
@@ -61,25 +64,27 @@ export class Tartiflette {
 
 
  attack2(targetpokemon) { 
-    attackName = "Bombe_a_woke";
+    let attackName = "Bombe_a_woke";
    
 
     //1 Fire, 2 Water, or 3 Grass
-    attackprecision = 0.9;
-    basicAttackValue = this.standardAttack(20,this.attackprecision )
+    let attackprecision = 0.9;
+    let basicAttackValue = this.standardAttack(20,attackprecision )
+    let messageContainer = document.querySelector(".battle-message-container");
 
     if (targetpokemon.hp > 0) {
       switch (targetpokemon.type) {
         case 1:
-          echo("Attack totallement inefficace qui renforce l'ennemi!" )  
+          messageContainer.innerHTML += "<p>Attack totallement inefficace qui renforce l'ennemi!</p>";
+          
           return -0.5*basicAttackValue;
           break;
         case 2:
-          echo ("Attack de bof");  
+          messageContainer.innerHTML += "<p>Attack de bof</p>";  
           return 1*basicAttackValue;
           break;
         case 3:
-          echo ("Attack super efficace!");  
+          messageContainer.innerHTML += "<p>Attack super efficace!</p>";  
           return 2*basicAttackValue;
           break;
         default:
@@ -96,25 +101,27 @@ export class Tartiflette {
 
 
  attack3(targetpokemon) {
-     attackName = "Tremblement_de_woke";
+     let attackName = "Tremblement_de_woke";
      //1 Fire, 2 Water, or 3 Grass
 
    //1 Fire, 2 Water, or 3 Grass
-    attackprecision = 0.9;
-    basicAttackValue = this.standardAttack(10,this.attackprecision )
+    let attackprecision = 0.9;
+    let basicAttackValue = this.standardAttack(10,attackprecision )
+    let messageContainer = document.querySelector(".battle-message-container");
 
     if (targetpokemon.hp > 0) {
       switch (targetpokemon.type) {
         case 1:
-          echo("Attack totallement inefficace qui renforce l'ennemi!" )  
+          messageContainer.innerHTML += "<p>Attack totallement inefficace qui renforce l'ennemi!</p>";
+          
           return -0.5*basicAttackValue;
           break;
         case 2:
-          echo ("Attack de bof");  
+          messageContainer.innerHTML += "<p>Attack de bof</p>";  
           return 1*basicAttackValue;
           break;
         case 3:
-          echo ("Attack super efficace!");  
+          messageContainer.innerHTML += "<p>Attack super efficace!</p>";  
           return 2*basicAttackValue;
           break;
         default:
@@ -130,28 +137,30 @@ export class Tartiflette {
 
 
  attack4(targetpokemon) {
-    attackName = "Coup_de_p..e";
+    let attackName = "Coup_de_p..e";
 
    //1 Fire, 2 Water, or 3 Grass
-    attackprecision = 1.0;
-    basicAttackValue = this.standardAttack(5,this.attackprecision )
+    let attackprecision = 1.0;
+    let basicAttackValue = this.standardAttack(5,attackprecision )
+    let messageContainer = document.querySelector(".battle-message-container");
 
     if (targetpokemon.hp > 0) {
       switch (targetpokemon.type) {
         case 1:
-          echo("Attack totallement inefficace qui renforce l'ennemi!" )  
+          messageContainer.innerHTML += "<p>Attack totallement inefficace qui renforce l'ennemi!</p>";
+          
           return -0.5*basicAttackValue;
           break;
         case 2:
-          echo ("Attack de bof");  
+          messageContainer.innerHTML += "<p>Attack de bof</p>";  
           return 1*basicAttackValue;
           break;
         case 3:
-          echo ("Attack super efficace!");  
+          messageContainer.innerHTML += "<p>Attack super efficace!</p>";  
           return 2*basicAttackValue;
           break;
         default:
-          echo ("attack error in switch");
+          messageContainer.innerHTML += "<p>attack error in switch</p>";
       } //end switch
 
       return true;
