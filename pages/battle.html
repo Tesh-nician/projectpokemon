@@ -27,7 +27,21 @@
       <div class="battle-adversary-container">
         <!-- the adversary container is on the top-right of the page. It contains the image of the adversary's selected pokemon. To the left of the image is a box mentioning maximum and current hp.  Under the box is a health bar. -->
 
-        <h1>ADVERSARY</h1>
+        <div id="adversary-health-div">
+          <!-- barre de santé vient ici, selectionné avec getId et puis appendChild-->
+
+         </div>
+
+        <div class="battle-adversary-text-box">
+            
+        </div>
+
+        <div class="battle-adversary-image-box">
+
+
+        </div>
+
+        <!-- <h1>TEST POSITIONING ADVERSARY</h1> -->
       </div>
       <!-- fin du adversary container -->
 
@@ -94,6 +108,9 @@
 
 
            /* add a health bar to my-health-div with a width proportional to the hp/maxhp ratio of myPokemon */
+
+           /* https://www.w3schools.com/howto/howto_js_progressbar.asp*/
+
           let healthBar = document.createElement("div");
           healthBar.id = "my-health-bar";
           healthBar.style.width = `${(myPokemon.hp / myPokemon.maxhp) * 300}px`;
@@ -134,11 +151,13 @@
 
           /* appendchild au container pour montrer le pokemon selectionné */
 
-          let adversaryContainer = document.querySelector(".battle-adversary-container");
+          let adversaryContainer = document.querySelector(".battle-adversary-image-box");
           let adversaryImage = document.createElement("img");
           adversaryImage.src = adversaryPokemon.pokurl;
-          adversaryImage.style.width = "300px";
+          adversaryImage.style.width = "200px";
           adversaryImage.style.height = "auto";
+          adversaryImage.style.position = "absolute";
+          adversaryImage.style.top = "60%";
           adversaryContainer.appendChild(adversaryImage);
 
         /*  add pokeName, hp and maxhp to battle-adversary-text-box */
@@ -147,15 +166,17 @@
 
 
            /* add a health bar to my-health-div with a width proportional to the hp/maxhp ratio of myPokemon */
-          let opponentHealthBar = document.createElement("div");
-          opponentHealthBar.id = "opponent-health-bar";
-          opponentHealthBar.style.width = `${(adversaryPokemon.hp / adversaryPokemon.maxhp) * 300}px`;
-          opponentHealthBar.style.height = "20px";
-          opponentHealthBar.style.backgroundColor = "red";
-          opponentHealthBar.style.borderRadius = "10px";
+
+           /* https://www.w3schools.com/howto/howto_js_progressbar.asp*/
+          let adversaryHealthBar = document.createElement("DIV");
+          adversaryHealthBar.id = "adversary-health-bar";
+          adversaryHealthBar.style.width = `${(adversaryPokemon.hp / adversaryPokemon.maxhp) * 300}px`;
+          adversaryHealthBar.style.height = "20px";
+          adversaryHealthBar.style.backgroundColor = "red";
+          adversaryHealthBar.style.borderRadius = "10px";
          
-          let opponentHealthDiv = document.getElementById("opponent-health-div");
-          opponentHealthDiv.appendChild(opponentHealthBar);
+          let adversaryHealthDiv = document.getElementById("adversary-health-div");
+          adversaryHealthDiv.appendChild(adversaryHealthBar);
 
 
           
