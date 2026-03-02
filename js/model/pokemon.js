@@ -1,4 +1,4 @@
-//class representing the pokemon objects
+//super class pour les objets pokemon, mais finalement jamais utilisé car.
 
 export class Pokemon {
 

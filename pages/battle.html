@@ -9,9 +9,9 @@
   <body>
     <div class="battle-main-container">
       <div class="battle-player-container">
-        <!-- player container is on the bottom-left of the page. It contains the image of the player's selected pokemon. Above the image is a box mentioning maximum and current hp. Above the box is a health bar. -->
+        <!--  container pour afficher myPokemon, image, hp et barre de santé -->
          <div id="my-health-div">
-          <!-- barre de santé vient ici, selectionné avec getId et puis appendChild-->
+          <!-- barre de santé , selectionné avec getId et puis appendChild-->
 
          </div>
 
@@ -25,10 +25,10 @@
       <!-- fin du player container -->
 
       <div class="battle-adversary-container">
-        <!-- the adversary container is on the top-right of the page. It contains the image of the adversary's selected pokemon. To the left of the image is a box mentioning maximum and current hp.  Under the box is a health bar. -->
+        <!-- container pour afficher image adversaire, hp, barre de santé -->
 
         <div id="adversary-health-div">
-          <!-- barre de santé vient ici, selectionné avec getId et puis appendChild-->
+          <!-- barre de santé, selectionné avec getId et puis appendChild-->
 
          </div>
 
@@ -46,14 +46,14 @@
       <!-- fin du adversary container -->
 
       <div class="battle-message-container">
-        <!-- the message container is a box in the middle of the page, with a message box that displays the actions of the player and the adversary during the battle -->
+        <!-- container pour les messages de combat -->
 
         <h1>MESSAGE CONTAINER</h1>
       </div>
       <!-- fin du message container -->
 
       <div class="battle-actions-container">
-        <!-- the actions container is a box on the bottom-right of the page. It contains the four buttons with the 4 attacks of the player's selected pokemon.  -->
+        <!-- container pour le 4 boutons d'attaque  -->
 
         <!-- <h1>ACTIONS CONTAINER TEST</h1> -->
         <button class="battle-action-button" id="attaque1">Attack1</button>
@@ -77,7 +77,7 @@
            /* myPokemon vient du localStorage avec un switch  */ 
 
           let selectedPokemon = localStorage.getItem("selectedPokemon");
-          /* create myPokemon object based on the selectedPokemon value */
+          /* creation du myPokemon sur base du variable selectedPokemon */
           let myPokemon;
           switch (selectedPokemon.toLowerCase()) {
             case "dracaufeu":
@@ -111,7 +111,7 @@
           myTextBox.innerHTML = `${myPokemon.pokeName}<br>HP: ${myPokemon.hp}/${myPokemon.maxhp}`;
 
 
-           /* add a health bar to my-health-div with a width proportional to the hp/maxhp ratio of myPokemon */
+          /* rajoute du health bar a my-health-div: hp/maxhp * largeur du div */
 
            /* https://www.w3schools.com/howto/howto_js_progressbar.asp*/
 
@@ -127,13 +127,13 @@
           myHealthDiv.appendChild(healthBar);
 
 
-          /* Get the adversary pokemon from localStorage */
+          /* adversary pokemon viens de localStorage */
 
 
           let adversaryPokemonName = localStorage.getItem("adversaryPokemon");
           console.log("Adversary Pokemon: " + adversaryPokemonName);
 
-          /* create adversary pokemon object based on the selectedPokemon value */
+          /* creation du object adversary pokemon sur base du variable selectedPokemon (viens de localStorage) */
           let adversaryPokemon;
           switch (adversaryPokemonName.toLowerCase()) {
             case "dracaufeu":
@@ -169,7 +169,7 @@
           adversaryTextBox.innerHTML = `${adversaryPokemon.pokeName}<br>HP: ${adversaryPokemon.hp}/${adversaryPokemon.maxhp}`;
 
 
-           /* add a health bar to my-health-div with a width proportional to the hp/maxhp ratio of myPokemon */
+           /* rajoute du health bar a adversary-health-div: hp/maxhp * largeur du div */
 
            /* https://www.w3schools.com/howto/howto_js_progressbar.asp*/
           let adversaryHealthBar = document.createElement("DIV");
@@ -183,7 +183,7 @@
           adversaryHealthDiv.appendChild(adversaryHealthBar);
 
 
-          /* add event listeners and attack names to the attack buttons to log the attack name when clicked */
+          /* rajouter les event listeners et attack names au attack buttons  */
 
           let attack1Button = document.getElementById("attaque1");
           attack1Button.innerHTML = myPokemon.attack1name;
@@ -205,7 +205,7 @@
             console.log("Attack 1: " + attackResult);
             adversaryPokemon.hp-=attackResult;
 
-            /* call post-attack functions to update the battle message container and check for end of battle */
+            /* appeller le post-attack functions pour faire le update du battle message container et check fin du battaille */
               messageContainer.innerHTML = `Tu utilises un ${myPokemon.attack1name} pour attaquer le ${adversaryPokemon.pokeName}.`;
             setTimeout(() => {
               updateMonAttaque(myPokemon, adversaryPokemon, attackResult);
@@ -226,7 +226,7 @@
             console.log("Attack 2: " + attackResult);
             adversaryPokemon.hp-=attackResult;
             
-            /* call post-attack functions to update the battle message container and check for end of battle */
+            /* appeller le post-attack functions pour faire le update du battle message container et check fin du battaille */
             messageContainer.innerHTML = `Tu utilises un ${myPokemon.attack2name} pour attaquer le ${adversaryPokemon.pokeName}.`;
             
             setTimeout(() => {
@@ -248,7 +248,7 @@
             console.log("Attack 3: " + attackResult);
             adversaryPokemon.hp-=attackResult;
             
-            /* call post-attack functions to update the battle message container and check for end of battle */
+            /* appeller le post-attack functions pour faire le update du battle message container et check fin du battaille */
             messageContainer.innerHTML = `Tu utilises un ${myPokemon.attack3name} pour attaquer le ${adversaryPokemon.pokeName}.`;
 
             setTimeout(() => {
@@ -269,7 +269,7 @@
             console.log("Attack 4: " + attackResult);
             adversaryPokemon.hp-=attackResult;
             
-            /* call post-attack functions to update the battle message container and check for end of battle */
+            /* appeller le post-attack functions pour faire le update du battle message container et check fin du battaille */
             messageContainer.innerHTML = `Tu utilises un ${myPokemon.attack4name} pour attaquer le ${adversaryPokemon.pokeName}.`;
             setTimeout(() => {
               updateMonAttaque(myPokemon, adversaryPokemon, attackResult);

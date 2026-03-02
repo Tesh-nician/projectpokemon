@@ -19,7 +19,7 @@
          
 
 
-      <!-- select pokemon from the three available types: Dracaufeu, Tartiflette or Tortank -->
+      <!-- selectioner le  pokemon -->
 
       <div class="pokemon-list-container">
 
@@ -64,7 +64,7 @@
 document.querySelectorAll('.select-pokemon-button').forEach(button => {
   button.addEventListener('click', function() {
     localStorage.setItem('selectedPokemon', this.id);
- /* create a random pokemon and add to localStorage */
+ /* creation du random pokemon et rajouter dans localStorage */
 
     let adversaryPokemon;
 
